@@ -12,7 +12,7 @@ function getPosition(str, m, i) {
 hexo.extend.filter.register('before_post_render', function(data) {
 
   // 正则表达式匹配文章内容并替换 图片 匹配项
-  data.content =data.content.replace(/\!\[\[(.+?).(jpg|jpeg|png|gif|bmp|tiff|svg|webp|ico)\]\]side([0-9]+)/g, '<img src="/2024/03/01/3.Source/$1.$2" align="right" width="$3">');
+  data.content =data.content.replace(/\!\[\[(.+?).(jpg|jpeg|png|gif|bmp|tiff|svg|webp|ico)\]\]side([0-9]+)/g, '<img src="/2024/03/01/3.Source/$1.$2" alt="$1.$2" align="right" width="$3">');
   data.content =data.content.replace(/\!\[\[(.+?).(jpg|jpeg|png|gif|bmp|tiff|svg|webp|ico)\]\]side/g, '<img src="/2024/03/01/3.Source/$1.$2" alt="$1.$2" align="right" width="450">');
   data.content =data.content.replace(/\!\[\[(.+?).(jpg|jpeg|png|gif|bmp|tiff|svg|webp|ico)\]\]name/g, '![$1](/2024/03/01/3.Source/$1.$2)');
   data.content =data.content.replace(/\!\[\[(.+?).(jpg|jpeg|png|gif|bmp|tiff|svg|webp|ico)\]\]/g, '![](/2024/03/01/3.Source/$1.$2)');
