@@ -1,9 +1,9 @@
 'use strict';
 var cheerio = require('cheerio');
 
-//Í¼Æ¬µÄsrcÂ·¾¶Ó¦¸Ã¸ÄÎª£º/2024/03/01/3.Source/Í¼Æ¬Ãû³Æ
+//å›¾ç‰‡çš„srcè·¯å¾„åº”è¯¥æ”¹ä¸ºï¼š/2024/03/01/3.Source/å›¾ç‰‡åç§°
 // http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string
-// ÕâÊÇÒ»¸öÑ°ÕÒÌØ¶¨×Ö·û´®Æ¬¶Î¡®m¡¯ÔÚ¡®str¡¯ÖĞ·¹µÚ i ´Î³öÏÖµÄÆğÊ¼Î»ÖÃµÄº¯Êı
+// è¿™æ˜¯ä¸€ä¸ªå¯»æ‰¾ç‰¹å®šå­—ç¬¦ä¸²ç‰‡æ®µâ€˜mâ€™åœ¨â€˜strâ€™ä¸­é¥­ç¬¬ i æ¬¡å‡ºç°çš„èµ·å§‹ä½ç½®çš„å‡½æ•°
 
 function getPosition(str, m, i) {
   return str.split(m, i).join(m).length;
@@ -11,16 +11,16 @@ function getPosition(str, m, i) {
 
 hexo.extend.filter.register('before_post_render', function(data) {
 
-  // ÕıÔò±í´ïÊ½Æ¥ÅäÎÄÕÂÄÚÈİ²¢Ìæ»» Í¼Æ¬ Æ¥ÅäÏî
+  // æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…æ–‡ç« å†…å®¹å¹¶æ›¿æ¢ å›¾ç‰‡ åŒ¹é…é¡¹
   data.content =data.content.replace(/\!\[\[(.+?).(jpg|jpeg|png|gif|bmp|tiff|svg|webp|ico)\]\]side([0-9]+)/g, '<img src="/2024/03/01/3.Source/$1.$2" align="right" width="$3">');
-  data.content =data.content.replace(/\!\[\[(.+?).(jpg|jpeg|png|gif|bmp|tiff|svg|webp|ico)\]\]side/g, '<img src="/2024/03/01/3.Source/$1.$2" align="right" width="450">');
+  data.content =data.content.replace(/\!\[\[(.+?).(jpg|jpeg|png|gif|bmp|tiff|svg|webp|ico)\]\]side/g, '<img src="/2024/03/01/3.Source/$1.$2" alt="$1.$2" align="right" width="450">');
   data.content =data.content.replace(/\!\[\[(.+?).(jpg|jpeg|png|gif|bmp|tiff|svg|webp|ico)\]\]name/g, '![$1](/2024/03/01/3.Source/$1.$2)');
   data.content =data.content.replace(/\!\[\[(.+?).(jpg|jpeg|png|gif|bmp|tiff|svg|webp|ico)\]\]/g, '![](/2024/03/01/3.Source/$1.$2)');
 
-  // ÕıÔò±í´ïÊ½Æ¥ÅäÎÄÕÂÁ´½Ó
+  // æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…æ–‡ç« é“¾æ¥
   data.content =data.content.replace(/\[\[___(.*?)\]\]\n/g, '<a href="/tags/$1/" rel="contents" data-pjax-state=""># $1</a> <br>');
-    // ÕâÀï¿ÉÒÔ¸ù¾İĞèÒª½øĞĞ×ª»»Âß¼­£¬ÀıÈç£º
-    // ½« access_path Ìæ»»ÎªÒ»¸öÍêÕûµÄURL»òÕßÆäËûµÄHTML½á¹¹
+    // è¿™é‡Œå¯ä»¥æ ¹æ®éœ€è¦è¿›è¡Œè½¬æ¢é€»è¾‘ï¼Œä¾‹å¦‚ï¼š
+    // å°† access_path æ›¿æ¢ä¸ºä¸€ä¸ªå®Œæ•´çš„URLæˆ–è€…å…¶ä»–çš„HTMLç»“æ„
   //console.info&&console.info("replaced" + data.permalink);
 });
 
