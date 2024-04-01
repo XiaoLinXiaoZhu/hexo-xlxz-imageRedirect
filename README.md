@@ -63,7 +63,7 @@
 1. 将release中的压缩包解压到 `hexo根目录\node_modules` 下 
 2. 在hexo根目录下打开 `_config.yml` ，修改如下：
 
-```json
+```
 render_drafts: false
 post_asset_folder: true  #将这个改为true
 marked:
